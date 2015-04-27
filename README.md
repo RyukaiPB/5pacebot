@@ -24,6 +24,7 @@ You should also consider examining the `plugins/` directory, to see what kind of
 ### Inner Workings ###
 
 Here is a simple overview of how the bot works:
+
 1. The bot parses bot.yaml to get the connection information.
 2. The bot will load everything in `util/*.rb`. Those files contain utility functions that are to be available to plugins. They are to only include bot specific things, the closest it gets to plugin-land is the mod functions.
 3. The bot will then load everything in `plugins/*.rb`. For each file loaded, it will call `gethooks()` which returns a hash. The key of the hash is a regex that determines when the command is to be triggered. The value of the hash contains a symbol to the function which is to be called when that command is triggered. The bot adds all of these entries to the hooks Hash.
