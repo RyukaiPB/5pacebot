@@ -1,0 +1,7 @@
+---
+owner    : # you, aka the person running the bot. Some things, only YOU can do in the built-in plugins by default
+username : # the name your bot should be called, the password is for this account too
+channel  : # without the "#"
+host     : # for twitch: irc.twitch.tv
+port     : # for twitch: 6667
+password : # insert oauth token here
