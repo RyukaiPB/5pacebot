@@ -4,9 +4,11 @@ require 'yaml'
 
 def quote_load()
     YAML.load_file("plugins/quote.yaml")
+    puts "Loaded Quotes"
 end
 def quote_save()
     IO.write("plugins/quote.yaml", YAML.dump(@fortunes))
+    puts "Saved quotes"
 end
 @fortunes ||= quote_load()
 @fortcount ||= @fortunes.count
@@ -24,7 +26,7 @@ end
 def quote_add(raw)
     user = getuser(raw)
     if ismod(user) then
-        fortune = getmsg(raw)[10..-1]
+        fortune = getmsg(raw)[10..-1].chomp
         @fortunes << fortune
         @fortcount = @fortcount + 1
         msg "Added this quote!"

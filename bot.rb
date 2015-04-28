@@ -55,25 +55,32 @@ end
 @irc.puts "NICK #{@user}"
 @irc.puts "JOIN #{@chan}"
 
-while true
-    ready = select([@irc, $stdin], nil, nil, nil)
-    next if !ready
+def mainloop()
+    while true
+        ready = select([@irc, $stdin], nil, nil, nil)
+        next if !ready
 
-    for s in ready[0]
-        #debug
-        if s == $stdin
-            then
-            return if $stdin.eof
-            s = $stdin.gets
-            @irc.send "#{s}\n", 0
-        #data
-        elsif s == @irc then
-            return if @irc.eof
-            s = @irc.gets
-            puts "< #{s}"
+        for s in ready[0]
+            #debug
+            if s == $stdin
+                then
+                return if $stdin.eof
+                s = $stdin.gets
+                @irc.send "#{s}\n", 0
+            #data
+            elsif s == @irc then
+                return if @irc.eof
+                s = @irc.gets
+                puts "< #{s}"
 
-            #allow each plugin to handle the message
-            runplugins(s)
+                #allow each plugin to handle the message
+                runplugins(s)
+            end
         end
     end
 end
+
+mainloop
+
+quote_save
+savemods
