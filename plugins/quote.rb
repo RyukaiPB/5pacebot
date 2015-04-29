@@ -3,8 +3,8 @@
 require 'yaml'
 
 def quote_load()
-    YAML.load_file("plugins/quote.yaml")
     puts "Loaded Quotes"
+    YAML.load_file("plugins/quote.yaml")
 end
 def quote_save()
     IO.write("plugins/quote.yaml", YAML.dump(@fortunes))
