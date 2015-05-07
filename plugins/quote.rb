@@ -41,36 +41,10 @@ end
 def gethooks()
     hooks = Hash.new(0)
 
-    hooks[genmsg "!quote"       ] = :quote_get
-    hooks[genmsg "!requote"     ] = :quote_reload
-    hooks[genmsg "!addquote "   ] = :quote_add
-    hooks[genmsg "!writequotes" ] = :quote_write
+    hooks[genmsg "!quote"        ] = :quote_get
+    hooks[genmsg "!reload quotes"] = :quote_reload
+    hooks[genmsg "!addquote "    ] = :quote_add
+    hooks[genmsg "!writequotes"  ] = :quote_write
 
     hooks
-end
-
-def input(raw)
-    msg = getmsg(raw)
-    user = getuser(raw)
-    case msg
-    when /^!quote/
-        @fortunes ||= getfort()
-        @fortcount ||= @fortunes.count
-        #msg("\"#{@fortunes.sample.chomp}\"")
-        msg("\"#{@fortunes[rand(@fortcount)]}\"")
-    when /^!reload/
-        @fortunes = getfort()
-        @fortcount = @fortunes.count
-    when /^!addquote /
-        if ismod(user) then
-            fortune = msg[10..-1]
-            @fortunes << fortune
-            @fortcount = @fortcount+1
-            msg "Added quote: #{fortune}"
-        else
-            msg "Hey, you're not a mod!"
-        end
-    when /^!writequotes/
-        savefort()
-    end
 end
