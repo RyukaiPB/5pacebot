@@ -31,3 +31,11 @@ Here is a simple overview of how the bot works:
 4. Every time a message arrives, the bot iterates over all the hooks' keys, and if any of them match, calls the associated function.
 
 Reloading both `util/*.rb` and `plugins/*.rb` is thus trivial. The functionality of the bot is rather simple, making it less prone for difficult errors and easier to modify for specific needs.
+
+### How to Upgrade ###
+
+1. Run `git stash` to save all your non-in-tree changes.
+2. Run `git pull` to pull in the latest version from git.
+3. Run `git stash apply` to bring back your personal changes.
+
+This might go wrong if you've edited more than the .yaml files (which are meant to get modified by the user). In that case, check your changes (`git status` before stashing them), and see if the tree's changes conflict with yours.
