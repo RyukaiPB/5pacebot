@@ -15,7 +15,13 @@ def modmanage_addmod(raw)
     end
 end
 def modmanage_listmods(raw)
-    listmods()
+    res = "The mods of this channel are:"
+    listmods().each do |x|
+        res << " "
+        res << x
+    end
+    res << "."
+    msg res
 end
 def modmanage_delmod(raw)
     if getuser(raw) == @owner then

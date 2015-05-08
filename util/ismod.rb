@@ -14,7 +14,7 @@ def ismod(user)
 end
 
 def listmods()
-    msg @mods.to_s
+    msg @mods
 end
 
 def addmod(user)
