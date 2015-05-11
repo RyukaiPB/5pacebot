@@ -39,7 +39,7 @@ def quote_write(raw)
 end
 
 def gethooks()
-    hooks = Hash.new(0)
+    hooks = {}
 
     hooks[genmsg "!quote"        ] = :quote_get
     hooks[genmsg "!reload quotes"] = :quote_reload

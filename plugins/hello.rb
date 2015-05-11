@@ -3,7 +3,7 @@ def hello_hi(raw)
 end
 
 def gethooks()
-    hooks = Hash.new(0)
+    hooks = {}
 
     hooks[genmsg "!hi"] = :hello_hi
 

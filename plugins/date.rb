@@ -10,10 +10,10 @@ def date_time(raw)
 end
 
 def gethooks()
-    hooks = Hash.new(0)
+    hooks = {}
 
-    hooks[genmsg '!time\s*'] = :date_time
-    hooks[genmsg '!date\s*'] = :date_date
+    hooks[genmsg '!time'] = :date_time
+    hooks[genmsg '!date'] = :date_date
 
     hooks
 end

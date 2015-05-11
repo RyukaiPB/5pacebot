@@ -9,9 +9,9 @@ def uptime(raw)
 end
 
 def gethooks()
-    hooks = Hash.new(0)
+    hooks = {}
 
-    hooks[genmsg '!uptime\s*'] = :uptime
+    hooks[genmsg '!uptime'] = :uptime
 
     hooks
 end

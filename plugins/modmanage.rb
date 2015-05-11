@@ -43,12 +43,12 @@ def modmanage_savemods(raw)
 end
 
 def gethooks()
-    hooks = Hash.new(0)
+    hooks = {}
 
-    hooks[genmsg '!addmod\s*'  ] = :modmanage_addmod
-    hooks[genmsg '!mods\s*'    ] = :modmanage_listmods
-    hooks[genmsg '!delmod\s*'  ] = :modmanage_delmod
-    hooks[genmsg '!savemods\s*'] = :modmanage_savemods
+    hooks[genmsg '!addmod'  ] = :modmanage_addmod
+    hooks[genmsg '!mods'    ] = :modmanage_listmods
+    hooks[genmsg '!delmod'  ] = :modmanage_delmod
+    hooks[genmsg '!savemods'] = :modmanage_savemods
 
     return hooks
 end

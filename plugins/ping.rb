@@ -7,7 +7,7 @@ def ping_pong(raw)
 end
 
 def gethooks()
-    hooks = Hash.new(0)
+    hooks = {}
 
     hooks[/^PING :(.+)$/i] = :ping_pong
 

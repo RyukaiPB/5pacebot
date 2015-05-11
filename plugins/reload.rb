@@ -16,7 +16,7 @@ def reload_all(x)
 end
 
 def gethooks()
-    hooks = Hash.new(0)
+    hooks = {}
 
     hooks[genmsg '!reload util'    ] = :reload_util
     hooks[genmsg '!reload plugins' ] = :reload_plugins

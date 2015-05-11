@@ -8,15 +8,18 @@ def help(raw)
     end
     res = "The following keys exist:"
     act_keys.each do |x|
-        res << " "
-        x.gsub!(/PRIVMSG #{@chan} :/, '')
-        res << '\'' << x << '\''
+        # we only want commands to show
+        if x =~ /PRIVMSG #{@chan} :!/ then
+            res << " "
+            x.gsub!(/PRIVMSG #{@chan} :/, '')
+            res << '\'' << x << '\''
+        end
     end
     msg res
 end
 
 def gethooks
-    hooks = Hash.new()
+    hooks = {}
 
     hooks[genmsg '!help'] = :help
 
